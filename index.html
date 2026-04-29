@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FrisAirco | Premium Auto Airco Vulsets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap');
+        
+        html, body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0f172a; 
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; 
+        }
+
+        #scroll-wrapper {
+            height: 100dvh; 
+            width: 100%;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch; 
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-modal {
+            animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="text-slate-100">
+
+    <nav class="w-full bg-slate-950/80 backdrop-blur-xl absolute top-0 left-0 z-[100] border-b border-sky-500/20 shadow-[0_0_30px_rgba(14,165,233,0.15)]">
+        <div class="max-w-5xl mx-auto px-5 py-4 flex justify-between items-center">
+            
+            <div class="flex items-center gap-2 cursor-pointer" onclick="document.getElementById('scroll-wrapper').scrollTo({top: 0, behavior: 'smooth'})">
+                <svg class="w-7 h-7 text-sky-400 drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18m0-18l-3 3m3-3l3 3m-3 15l-3-3m3 3l3-3M6.545 6.545l12.728 12.728m0-12.728L6.545 19.273M4.455 12H19.5m-15.045 0l3-3m-3 3l3 3m12.045-3l-3-3m3 3l-3 3"></path>
+                </svg>
+                <div class="text-2xl font-black tracking-widest uppercase italic drop-shadow-[0_0_15px_rgba(56,189,248,0.5)]">
+                    FRIS<span class="text-sky-400">AIRCO</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 md:gap-6">
+                <div class="relative">
+                    <select id="langSwitcher" onchange="changeLanguage(this.value)" class="appearance-none bg-slate-900 border border-sky-500/30 text-sky-100 text-sm md:text-base font-semibold py-2 pl-3 pr-8 rounded-lg focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 cursor-pointer transition-all shadow-[0_0_15px_rgba(14,165,233,0.2)]">
+                        <option value="nl">NL</option>
+                        <option value="fr">FR</option>
+                        <option value="en">EN</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-sky-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </div>
+
+                <button onclick="scrollToOrder()" data-i18n="nav-btn" class="hidden sm:inline-block bg-sky-500 active:scale-95 text-white px-5 py-2 rounded-lg font-bold transition-transform text-sm shadow-[0_0_20px_rgba(14,165,233,0.6)] border border-sky-400/50 uppercase tracking-wide">
+                    Reserveer
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="scroll-wrapper">
+        
+        <main class="flex-grow pt-36 pb-12 px-5 flex flex-col items-center text-center max-w-4xl mx-auto min-h-screen">
+            
+            <div class="reveal inline-block bg-sky-950/50 border border-sky-400/40 text-sky-300 px-5 py-1.5 rounded-full text-xs font-black tracking-widest mb-8 uppercase shadow-[0_0_20px_rgba(14,165,233,0.3)] backdrop-blur-sm">
+                <span data-i18n="launch">Benelux Lancering: Lente 2026</span>
+            </div>
+
+            <h1 class="reveal delay-100 text-5xl md:text-7xl font-black leading-tight tracking-tight mb-8 drop-shadow-2xl">
+                <span data-i18n="title-1" class="text-transparent bg-clip-text bg-gradient-to-r from-white to-sky-200 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">Breng De Kou Terug.</span>
+            </h1>
+            
+            <p class="reveal delay-200 text-lg md:text-xl text-slate-200 mb-12 max-w-2xl font-medium leading-relaxed drop-shadow-md" data-i18n="subtitle">
+                De professionele doe-het-zelf vulset. Compleet met vervangend gas en een precisiemanometer. Herstel de airco van je auto veilig thuis.
+            </p>
+
+            <div class="reveal w-full max-w-3xl mx-auto mb-16 flex flex-col items-center relative">
+                <div class="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-600 rounded-2xl blur opacity-30"></div>
+                <div class="relative w-full aspect-video bg-slate-950 rounded-xl overflow-hidden border border-sky-500/30 shadow-[0_0_40px_rgba(14,165,233,0.2)] mb-4">
+                    <iframe class="absolute top-0 left-0 w-full h-full" 
+                            src="https://www.youtube.com/embed/L8BCGTkCexs?rel=0" 
+                            title="EasyKlima Installation Guide" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="inline-flex items-center gap-2 bg-slate-900/90 border border-sky-500/30 px-5 py-2.5 rounded-full text-sky-100 text-xs md:text-sm font-bold shadow-[0_0_15px_rgba(14,165,233,0.3)] backdrop-blur-md uppercase tracking-wide mt-2">
+                    <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
+                    <span data-i18n="video-caption">Officiële EasyKlima™ Installatiegids</span>
+                </div>
+            </div>
+
+            <div class="reveal w-full max-w-4xl mx-auto mb-20">
+                <div class="bg-slate-900/80 border border-sky-500/30 rounded-3xl p-8 md:p-10 text-left shadow-[0_0_30px_rgba(14,165,233,0.15)] backdrop-blur-md relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <h3 class="text-2xl md:text-3xl font-black mb-10 text-white tracking-wide uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] text-center md:text-left" data-i18n="feat-title">Waarom Kiezen Voor Onze Sets?</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                        <div class="flex items-start gap-5">
+                            <div class="bg-sky-950 p-3 rounded-xl border border-sky-500/40 shadow-[0_0_15px_rgba(14,165,233,0.3)] shrink-0">
+                                <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-sky-100 mb-2 tracking-wide" data-i18n="feat-1-title">Snel & Eenvoudig</h4>
+                                <p class="text-sm text-slate-400 leading-relaxed font-medium" data-i18n="feat-1-desc">Herstel de koelcapaciteit van je auto in slechts 10 minuten, zonder speciaal gereedschap.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-5">
+                            <div class="bg-sky-950 p-3 rounded-xl border border-sky-500/40 shadow-[0_0_15px_rgba(14,165,233,0.3)] shrink-0">
+                                <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-sky-100 mb-2 tracking-wide" data-i18n="feat-2-title">Geen Ervaring Vereist</h4>
+                                <p class="text-sm text-slate-400 leading-relaxed font-medium" data-i18n="feat-2-desc">Wordt geleverd met een duidelijke, herbruikbare kleurgecodeerde manometer en instructies.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div class="bg-sky-950 p-3 rounded-xl border border-sky-500/40 shadow-[0_0_15px_rgba(14,165,233,0.3)] shrink-0">
+                                <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-sky-100 mb-2 tracking-wide" data-i18n="feat-3-title">100% Veilig & Eco</h4>
+                                <p class="text-sm text-slate-400 leading-relaxed font-medium" data-i18n="feat-3-desc">Een niet-giftige, milieuvriendelijke koolwaterstofformule die veilig is voor jouw aircosysteem.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div class="bg-sky-950 p-3 rounded-xl border border-sky-500/40 shadow-[0_0_15px_rgba(14,165,233,0.3)] shrink-0">
+                                <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-sky-100 mb-2 tracking-wide" data-i18n="feat-4-title">Kostenbesparend</h4>
+                                <p class="text-sm text-slate-400 leading-relaxed font-medium" data-i18n="feat-4-desc">Vermijd dure garagebezoeken en herlaad het systeem eenvoudig zelf thuis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="order" class="reveal w-full max-w-4xl mx-auto pt-8 border-t border-slate-800/50">
+                <h2 class="text-4xl font-black text-center mb-12 text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] uppercase tracking-wide" data-i18n="select-title">Kies Jouw Systeem</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-slate-900/80 border border-emerald-400/50 rounded-2xl p-6 text-left flex flex-col relative overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.3)] backdrop-blur-md">
+                        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-emerald-400 to-teal-500 shadow-[0_0_10px_rgba(52,211,153,0.8)]"></div>
+                        <div class="aspect-[4/3] bg-white rounded-xl mb-6 flex items-center justify-center p-4 overflow-hidden border border-slate-700/50 shadow-inner relative">
+                            <div class="absolute inset-0 bg-emerald-500/5 mix-blend-overlay"></div>
+                            <img src="https://easyklima.com/wp-content/uploads/2022/07/Starterkit-R1234yf-new-1-1536x1536.webp" alt="R1234yf Kit" class="h-full w-full object-contain mix-blend-multiply relative z-10">
+                        </div>
+                        <div class="inline-block bg-emerald-950 text-emerald-400 text-xs font-black px-4 py-1.5 rounded-full mb-4 self-start border border-emerald-500/30 shadow-[0_0_10px_rgba(16,185,129,0.3)]" data-i18n="year-1234yf">BOUWJAAR: 2017 - HEDEN</div>
+                        <h3 class="text-2xl font-black mb-2 text-white tracking-wide" data-i18n="title-1234yf">R1234yf Gas + Slang</h3>
+                        <p class="text-slate-300 text-sm mb-8 flex-grow font-medium leading-relaxed" data-i18n="desc-1234yf">Is jouw auto gebouwd in 2017 of nieuwer? Dan heeft jouw aircosysteem dit moderne gas nodig. Inclusief slang en speciale adapter.</p>
+                        
+                        <button onclick="openModal('R1234yf')" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 active:scale-95 text-white font-bold py-4 rounded-xl transition-transform shadow-[0_0_20px_rgba(16,185,129,0.5)] uppercase tracking-wider text-sm border border-emerald-400/50" data-i18n="btn-reserve">Reserveer Nu</button>
+                    </div>
+                    
+                    <div class="bg-slate-900/80 border border-sky-400/50 rounded-2xl p-6 text-left flex flex-col relative overflow-hidden shadow-[0_0_30px_rgba(14,165,233,0.3)] backdrop-blur-md">
+                        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-sky-400 to-blue-500 shadow-[0_0_10px_rgba(56,189,248,0.8)]"></div>
+                        <div class="aspect-[4/3] bg-white rounded-xl mb-6 flex items-center justify-center p-4 overflow-hidden border border-slate-700/50 shadow-inner relative">
+                            <div class="absolute inset-0 bg-sky-500/5 mix-blend-overlay"></div>
+                            <img src="https://easyklima.com/wp-content/uploads/2021/06/EasyKlima_P_1-2-1170x1170.webp" alt="R134a Kit" class="h-full w-full object-contain mix-blend-multiply relative z-10">
+                        </div>
+                        <div class="inline-block bg-sky-950 text-sky-400 text-xs font-black px-4 py-1.5 rounded-full mb-4 self-start border border-sky-500/30 shadow-[0_0_10px_rgba(14,165,233,0.3)]" data-i18n="year-134a">BOUWJAAR: 1994 - 2016</div>
+                        <h3 class="text-2xl font-black mb-2 text-white tracking-wide" data-i18n="title-134a">R134a Gas + Slang</h3>
+                        <p class="text-slate-300 text-sm mb-8 flex-grow font-medium leading-relaxed" data-i18n="desc-134a">Is jouw auto geproduceerd tussen 1994 en 2016? Dan is dit de juiste set. Inclusief de standaard manometer slang.</p>
+                        
+                        <button onclick="openModal('R134a')" class="w-full bg-gradient-to-r from-sky-500 to-blue-600 active:scale-95 text-white font-bold py-4 rounded-xl transition-transform shadow-[0_0_20px_rgba(14,165,233,0.5)] uppercase tracking-wider text-sm border border-sky-400/50" data-i18n="btn-reserve">Reserveer Nu</button>
+                    </div>
+
+                </div>
+                <p class="text-sm font-bold text-slate-400 mt-8 mb-16 text-center drop-shadow-md" data-i18n="cta-sub">Geen betaling vereist. Eerste batch arriveert binnenkort.</p>
+            </div>
+
+            <div class="reveal w-full max-w-3xl mx-auto mb-20 text-left">
+                <h3 class="text-2xl font-black mb-8 text-center text-white tracking-wide uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]" data-i18n="ob-title">Twijfels? Wij Hebben De Antwoorden.</h3>
+                
+                <div class="space-y-4">
+                    <details class="group bg-slate-900/80 border border-slate-700/50 rounded-2xl open:border-sky-500/40 open:shadow-[0_0_20px_rgba(14,165,233,0.15)] transition-all duration-300">
+                        <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-sky-100">
+                            <span data-i18n="ob-1-q">Kan ik mijn airco of motor beschadigen?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-slate-400 mt-1 p-5 pt-0 text-sm leading-relaxed" data-i18n="ob-1-a">Absoluut niet. Onze formule is speciaal ontworpen om 100% veilig te mixen met het originele gas in je aircosysteem. Sterker nog, het bevat synthetische oliën die je compressor smeren en de levensduur verlengen.</p>
+                    </details>
+
+                    <details class="group bg-slate-900/80 border border-slate-700/50 rounded-2xl open:border-emerald-500/40 open:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300">
+                        <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-sky-100">
+                            <span data-i18n="ob-2-q">Wat als ik per ongeluk de verkeerde set (bouwjaar) bestel?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-slate-400 mt-1 p-5 pt-0 text-sm leading-relaxed" data-i18n="ob-2-a">Geen zorgen! De aansluitpoorten ('Lage Druk' poorten) onder je motorkap zijn fysiek verschillend per bouwjaar. Het is letterlijk onmogelijk om de R134a slang op een R1234yf auto aan te sluiten, en vice versa. Je kunt dus geen fatale fout maken.</p>
+                    </details>
+
+                    <details class="group bg-slate-900/80 border border-slate-700/50 rounded-2xl open:border-sky-500/40 open:shadow-[0_0_20px_rgba(14,165,233,0.15)] transition-all duration-300">
+                        <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-sky-100">
+                            <span data-i18n="ob-3-q">Heb ik technische autokennis nodig om dit te doen?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-slate-400 mt-1 p-5 pt-0 text-sm leading-relaxed" data-i18n="ob-3-a">Nee, totaal niet. Als je de banden van je auto kunt oppompen of ruitenwisservloeistof kunt bijvullen, kun je dit ook. De slang heeft een simpele 'klik'-aansluiting en de manometer gebruikt kleurcodes (groen = vol). De instructievideo laat je exact zien waar je moet zijn.</p>
+                    </details>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="bg-slate-950 py-8 border-t border-sky-900/50 text-center text-slate-500 text-sm mt-auto w-full shadow-[inset_0_20px_30px_rgba(0,0,0,0.5)]">
+            <p class="font-semibold">&copy; 2026 FrisAirco Benelux. All rights reserved.</p>
+            <p class="mt-2 text-xs uppercase tracking-widest text-slate-600" data-i18n="footer-sub">Ontworpen voor de Europese Markt.</p>
+        </footer>
+
+    </div> <div id="orderModal" class="fixed inset-0 z-[1000] hidden items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onclick="closeModal()"></div>
+        
+        <div class="bg-slate-900 border border-sky-500/40 p-5 md:p-8 rounded-2xl w-full max-w-md relative z-10 shadow-[0_0_50px_rgba(14,165,233,0.3)] animate-modal text-left">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sky-400 to-blue-600 shadow-[0_0_15px_rgba(56,189,248,0.8)] rounded-t-2xl"></div>
+            
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white transition-colors z-20">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <div class="flex items-center gap-4 mb-6 bg-slate-950/50 p-3 rounded-xl border border-slate-700/50 shadow-inner">
+                <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-1.5 shrink-0 shadow-sm">
+                    <img id="modalImage" src="" alt="Selected Kit" class="w-full h-full object-contain mix-blend-multiply">
+                </div>
+                <div>
+                    <h2 class="text-xl font-black text-white tracking-tight" data-i18n="modal-title">Pre-Order Reservering</h2>
+                    <p id="modalSubtitle" data-kit="" class="text-sm font-black tracking-widest uppercase mt-1"></p>
+                </div>
+            </div>
+            
+            <form onsubmit="submitOrder(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold tracking-wider text-sky-200 uppercase mb-1" data-i18n="modal-name">Volledige Naam</label>
+                    <input type="text" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all shadow-inner font-medium">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold tracking-wider text-sky-200 uppercase mb-1" data-i18n="modal-email">E-mailadres</label>
+                    <input type="email" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all shadow-inner font-medium">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold tracking-wider text-sky-200 uppercase mb-1" data-i18n="modal-car">Auto (Merk & Model)</label>
+                    <input type="text" placeholder="Bijv. Volkswagen Golf" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all placeholder-slate-600 shadow-inner font-medium">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold tracking-wider text-sky-200 uppercase mb-1" data-i18n="modal-year">Bouwjaar Auto</label>
+                    <input type="number" min="1950" max="2026" placeholder="Bijv. 2018" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all placeholder-slate-600 shadow-inner font-medium">
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-sky-500 to-blue-600 active:scale-95 text-white font-black py-4 rounded-xl mt-6 transition-transform shadow-[0_0_25px_rgba(14,165,233,0.5)] uppercase tracking-wider text-sm border border-sky-300/30" data-i18n="modal-btn">
+                    Bevestig Reservering
+                </button>
+                <p class="text-xs font-semibold text-slate-400 text-center mt-3" data-i18n="modal-note">Dit is een vrijblijvende reservering. Wij nemen contact op zodra de voorraad arriveert.</p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('scroll-wrapper').scrollTo(0, 0);
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollWrapper = document.getElementById('scroll-wrapper');
+            const observerOptions = { root: scrollWrapper, rootMargin: '0px', threshold: 0.1 };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+
+        function scrollToOrder() {
+            const wrapper = document.getElementById('scroll-wrapper');
+            const target = document.getElementById('order');
+            wrapper.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+        }
+
+        function openModal(kitType) {
+            const modal = document.getElementById('orderModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            const subtitleEl = document.getElementById('modalSubtitle');
+            subtitleEl.dataset.kit = kitType; 
+            updateSubtitleText();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('orderModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function submitOrder(e) {
+            e.preventDefault(); 
+            const lang = document.documentElement.lang;
+            const msgs = {
+                nl: "Bedankt voor je reservering! We nemen snel contact met je op.",
+                fr: "Merci pour votre réservation ! Nous vous contacterons bientôt.",
+                en: "Thank you for your reservation! We will contact you soon."
+            };
+            
+            alert(msgs[lang]);
+            closeModal();
+            e.target.reset(); 
+        }
+
+        function updateSubtitleText() {
+            const subtitleEl = document.getElementById('modalSubtitle');
+            const imgEl = document.getElementById('modalImage');
+            const kitType = subtitleEl.dataset.kit;
+            const lang = document.documentElement.lang;
+            
+            if (!kitType) return;
+
+            if (kitType === 'R134a') {
+                imgEl.src = "https://easyklima.com/wp-content/uploads/2021/06/EasyKlima_P_1-2-1170x1170.webp";
+                if(lang === 'nl') subtitleEl.innerText = "Geselecteerd: R134a Kit";
+                else if(lang === 'fr') subtitleEl.innerText = "Sélectionné : Kit R134a";
+                else subtitleEl.innerText = "Selected: R134a Kit";
+                subtitleEl.className = "text-sky-400 text-sm font-black tracking-widest uppercase drop-shadow-[0_0_8px_rgba(56,189,248,0.5)] mt-1"; 
+            } else {
+                imgEl.src = "https://easyklima.com/wp-content/uploads/2022/07/Starterkit-R1234yf-new-1-1536x1536.webp";
+                if(lang === 'nl') subtitleEl.innerText = "Geselecteerd: R1234yf Kit";
+                else if(lang === 'fr') subtitleEl.innerText = "Sélectionné : Kit R1234yf";
+                else subtitleEl.innerText = "Selected: R1234yf Kit";
+                subtitleEl.className = "text-emerald-400 text-sm font-black tracking-widest uppercase drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] mt-1"; 
+            }
+        }
+
+        const translations = {
+            nl: {
+                "nav-btn": "Reserveer",
+                "launch": "Benelux Lancering: Lente 2026",
+                "title-1": "Breng De Kou Terug.",
+                "subtitle": "De professionele doe-het-zelf vulset. Compleet met vervangend gas en een precisiemanometer. Herstel de airco van je auto veilig thuis.",
+                "video-caption": "Officiële EasyKlima™ Installatiegids",
+                "feat-title": "Waarom Kiezen Voor Onze Sets?",
+                "feat-1-title": "Snel & Eenvoudig",
+                "feat-1-desc": "Herstel de koelcapaciteit van je auto in slechts 10 minuten, zonder speciaal gereedschap.",
+                "feat-2-title": "Geen Ervaring Vereist",
+                "feat-2-desc": "Wordt geleverd met een duidelijke, herbruikbare kleurgecodeerde manometer en instructies.",
+                "feat-3-title": "100% Veilig & Eco",
+                "feat-3-desc": "Een niet-giftige, milieuvriendelijke koolwaterstofformule die veilig is voor jouw aircosysteem.",
+                "feat-4-title": "Kostenbesparend",
+                "feat-4-desc": "Vermijd dure garagebezoeken en herlaad het systeem eenvoudig zelf thuis.",
+                "select-title": "Kies Jouw Systeem",
+                "year-134a": "BOUWJAAR: 1994 - 2016",
+                "title-134a": "R134a Gas + Slang",
+                "desc-134a": "Is jouw auto geproduceerd tussen 1994 en 2016? Dan is dit de juiste set. Inclusief de standaard manometer slang.",
+                "year-1234yf": "BOUWJAAR: 2017 - HEDEN",
+                "title-1234yf": "R1234yf Gas + Slang",
+                "desc-1234yf": "Is jouw auto gebouwd in 2017 of nieuwer? Dan heeft jouw aircosysteem dit moderne gas nodig. Inclusief slang en speciale adapter.",
+                "ob-title": "Twijfels? Wij Hebben De Antwoorden.",
+                "ob-1-q": "Kan ik mijn airco of motor beschadigen?",
+                "ob-1-a": "Absoluut niet. Onze formule is speciaal ontworpen om 100% veilig te mixen met het originele gas in je aircosysteem. Sterker nog, het bevat synthetische oliën die je compressor smeren en de levensduur verlengen.",
+                "ob-2-q": "Wat als ik per ongeluk de verkeerde set (bouwjaar) bestel?",
+                "ob-2-a": "Geen zorgen! De aansluitpoorten ('Lage Druk' poorten) onder je motorkap zijn fysiek verschillend per bouwjaar. Het is letterlijk onmogelijk om de R134a slang op een R1234yf auto aan te sluiten, en vice versa. Je kunt dus geen fatale fout maken.",
+                "ob-3-q": "Heb ik technische autokennis nodig om dit te doen?",
+                "ob-3-a": "Nee, totaal niet. Als je de banden van je auto kunt oppompen of ruitenwisservloeistof kunt bijvullen, kun je dit ook. De slang heeft een simpele 'klik'-aansluiting en de manometer gebruikt kleurcodes (groen = vol). De instructievideo laat je exact zien waar je moet zijn.",
+                "btn-reserve": "Reserveer Nu",
+                "cta-sub": "Geen betaling vereist. Eerste batch arriveert binnenkort.",
+                "footer-sub": "Ontworpen voor de Europese Markt.",
+                "modal-title": "Pre-Order Reservering",
+                "modal-name": "Volledige Naam",
+                "modal-email": "E-mailadres",
+                "modal-car": "Auto (Merk & Model)",
+                "modal-year": "Bouwjaar Auto",
+                "modal-btn": "Bevestig Reservering",
+                "modal-note": "Dit is een vrijblijvende reservering. Wij nemen contact op zodra de voorraad arriveert."
+            },
+            fr: {
+                "nav-btn": "Précommander",
+                "launch": "Lancement Benelux : Printemps 2026",
+                "title-1": "Ramenez Le Froid.",
+                "subtitle": "Le kit de recharge professionnel à faire soi-même. Complet avec gaz et manomètre de précision. Restaurez la climatisation de votre voiture à domicile.",
+                "video-caption": "Guide d'installation officiel EasyKlima™",
+                "feat-title": "Pourquoi Choisir Nos Kits ?",
+                "feat-1-title": "Rapide & Facile",
+                "feat-1-desc": "Restaurez la capacité de refroidissement de votre voiture en seulement 10 minutes, sans outils spéciaux.",
+                "feat-2-title": "Aucune Expérience Requise",
+                "feat-2-desc": "Livré avec un manomètre à code couleur réutilisable et des instructions claires.",
+                "feat-3-title": "100% Sûr & Éco",
+                "feat-3-desc": "Formule d'hydrocarbures non toxique et écologique, sans danger pour votre climatisation.",
+                "feat-4-title": "Économique",
+                "feat-4-desc": "Évitez les visites coûteuses au garage et rechargez le système vous-même à la maison.",
+                "select-title": "Choisissez Votre Système",
+                "year-134a": "ANNÉE : 1994 - 2016",
+                "title-134a": "Gaz R134a + Tuyau",
+                "desc-134a": "Votre voiture a-t-elle été fabriquée entre 1994 et 2016 ? Voici le kit adapté. Inclut le tuyau avec manomètre.",
+                "year-1234yf": "ANNÉE : 2017 - PRÉSENT",
+                "title-1234yf": "Gaz R1234yf + Tuyau",
+                "desc-1234yf": "Votre voiture a-t-elle été fabriquée en 2017 ou après ? C'est le gaz qu'il vous faut. Inclut tuyau avec manomètre et adaptateur.",
+                "ob-title": "Des Doutes ? Nous Avons Les Réponses.",
+                "ob-1-q": "Puis-je endommager ma climatisation ou mon moteur ?",
+                "ob-1-a": "Absolument pas. Notre formule est spécialement conçue pour se mélanger en toute sécurité à 100% avec le gaz de votre système. Elle contient même des huiles synthétiques pour lubrifier votre compresseur.",
+                "ob-2-q": "Que se passe-t-il si je commande le mauvais kit par erreur ?",
+                "ob-2-a": "Pas de soucis ! Les ports de connexion sous votre capot sont physiquement différents. Il est impossible de brancher un tuyau R134a sur une voiture R1234yf. Vous ne pouvez donc faire aucune erreur fatale.",
+                "ob-3-q": "Ai-je besoin de connaissances en mécanique ?",
+                "ob-3-a": "Non. Si vous savez gonfler vos pneus, vous pouvez utiliser ce kit. Le tuyau a une simple connexion 'clic' et le manomètre utilise des codes couleurs. Notre vidéo vous montre exactement quoi faire.",
+                "btn-reserve": "Réservez Maintenant",
+                "cta-sub": "Aucun paiement requis. Le premier lot arrive bientôt.",
+                "footer-sub": "Conçu pour le marché européen.",
+                "modal-title": "Réservation de Précommande",
+                "modal-name": "Nom Complet",
+                "modal-email": "Adresse E-mail",
+                "modal-car": "Voiture (Marque et Modèle)",
+                "modal-year": "Année de fabrication",
+                "modal-btn": "Confirmer la Réservation",
+                "modal-note": "Ceci est une réservation sans engagement. Nous vous contacterons dès l'arrivée du stock."
+            },
+            en: {
+                "nav-btn": "Pre-Order",
+                "launch": "Benelux Launch: Spring 2026",
+                "title-1": "Bring Back The Cold.",
+                "subtitle": "The professional-grade DIY refill kit. Complete with replacement gas and a precision pressure gauge. Restore your car's AC safely at home.",
+                "video-caption": "Official EasyKlima™ Installation Guide",
+                "feat-title": "Why Choose Our Kits?",
+                "feat-1-title": "Fast & Easy",
+                "feat-1-desc": "Restore your car's cooling capacity in just 10 minutes, with no special tools required.",
+                "feat-2-title": "No Experience Needed",
+                "feat-2-desc": "Comes with a clear, reusable color-coded gauge and instructions.",
+                "feat-3-title": "100% Safe & Eco",
+                "feat-3-desc": "A non-toxic, eco-friendly hydrocarbon formula that is completely safe for your AC system.",
+                "feat-4-title": "Cost-Effective",
+                "feat-4-desc": "Avoid expensive garage visits and easily recharge the system yourself at home.",
+                "select-title": "Choose Your System",
+                "year-134a": "YEAR: 1994 - 2016",
+                "title-134a": "R134a Gas + Hose",
+                "desc-134a": "Was your car manufactured between 1994 and 2016? Then this is the right kit. Includes pressure gauge hose.",
+                "year-1234yf": "YEAR: 2017 - PRESENT",
+                "title-1234yf": "R1234yf Gas + Hose",
+                "desc-1234yf": "Was your car manufactured in 2017 or newer? Then your car requires this gas. Includes pressure gauge hose and adapter.",
+                "ob-title": "Doubts? We Have The Answers.",
+                "ob-1-q": "Can I damage my AC or engine?",
+                "ob-1-a": "Absolutely not. Our formula is specifically designed to safely mix with your existing system. It even contains synthetic oils that lubricate your compressor and extend its life.",
+                "ob-2-q": "What if I accidentally order the wrong gas for my year?",
+                "ob-2-a": "Don't worry! The connection ports under your hood are physically different. It is literally impossible to connect the R134a hose to an R1234yf car, and vice versa. You cannot make a fatal mistake.",
+                "ob-3-q": "Do I need technical car knowledge to do this?",
+                "ob-3-a": "Not at all. If you can inflate a tire, you can do this. The hose has a simple 'click' connection, the gauge uses color codes (green = full), and our video shows you exactly where the port is located.",
+                "btn-reserve": "Reserve Now",
+                "cta-sub": "No payment required. First batch arriving soon.",
+                "footer-sub": "Engineered for the European Market.",
+                "modal-title": "Pre-Order Reservation",
+                "modal-name": "Full Name",
+                "modal-email": "Email Address",
+                "modal-car": "Car (Make & Model)",
+                "modal-year": "Car Production Year",
+                "modal-btn": "Confirm Reservation",
+                "modal-note": "This is a no-obligation reservation. We will contact you as soon as stock arrives."
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            const elements = document.querySelectorAll('[data-i18n]');
+            
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            updateSubtitleText();
+        }
+    </script>
+</body>
+</html>
